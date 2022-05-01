@@ -1,0 +1,9 @@
+Hello there, welcome to my server.
+I have some text here for you to read so that you can test GET and HEAD requests
+!@#$%^&*()_+
+{}|":?><sad;flkj;dslkfja;lsfewebjb
+That should cover random things.
+I don't have much else to say. 
+Just trying to add as many lines as I can.
+Thanks for reading and testing!
+Stay curious!

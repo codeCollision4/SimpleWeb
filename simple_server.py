@@ -9,16 +9,17 @@ response_dict = {"Get found": "HTTP/1.1 200 OK\r\n\r\n",
                  "Head not": "HTTP/1.1 404 Not Found\r\n\r\n",
                  "Not": "HTTP/1.1 501 Not Implemented\r\n\r\n"
                 }
-
+# Opens and closes socket 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    s.bind((host, serverport))
-    s.listen(1)
+    s.bind((host, serverport)) #Binding welcoming socket
+    s.listen(1) # Telling socket to listen
     print("SERVER IS LISTENING\n\n")
     while True:
-        connectionSocket, addr = s.accept()
+        connectionSocket, addr = s.accept() # Accepting connection from client
+        # Creating socket between server and client
         with connectionSocket:
             print(f"SERVER CONNECTED WITH {addr[0]}:{addr[1]}\n")
-            request = connectionSocket.recv(4096)
+            request = connectionSocket.recv(4096) # getting request from client
             req_str = request.decode()
             # Client message
             print("MESSAGE RECEIVED FROM CLIENT:")

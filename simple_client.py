@@ -18,18 +18,18 @@ while True:
         exit(0) # End program if stop
     host = parse[1]
     pathname = parse[2]
-    if host != "localhost":
+    if host != "localhost": # Setting ports based on what host
         serverport = 80
     else:
         serverport = 60000
 
     # Establishing client socket 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.connect((host, serverport))
-        request = f"{method} /{pathname} HTTP/1.1\r\nHost: {host}\r\n\r\n"
-        s.sendall(request.encode())
+        s.connect((host, serverport)) # Connecting socket to host and port
+        request = f"{method} /{pathname} HTTP/1.1\r\nHost: {host}\r\n\r\n" # Creating request string
+        s.sendall(request.encode()) # Sending request as bytes
         response = s.recv(4096) # Getting first packet
-        if method == "GET" and host != 'localhost':
+        if method == "GET" and host != 'localhost': # Only using content length if Get req and not a localhost
             temp = response.decode() # Holding header to check content length
             # Check for Content Length
             m = re.search('Content-Length: \d+', temp)
